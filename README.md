@@ -10,6 +10,7 @@ git remote add origin REMOTE-REPO
 git branch -M main
 
 git push origin main
+
 /u/ibmuser/gbwork/studentdb
 
 /usr/lpp/IBM/dbbver2/lib/sclient 127.0.0.1 8080 groovyz  /u/ibmuser/gbwork/studentdb/compilecbl.groovy
