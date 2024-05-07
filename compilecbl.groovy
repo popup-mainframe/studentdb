@@ -1,12 +1,18 @@
 import com.ibm.dbb.build.*
+import com.ibm.dbb.build.report.BuildReport
+import com.ibm.dbb.build.report.records.*
+
+println("Build report included . . .")
+BuildReportFactory.createDefaultReport()
+
+
 
 println("Copying source from zFS to PDS . . .")
-def copy = new CopyToPDS().file(new File("/u/ibmuser/gbdir/hellogb.cbl")).dataset("GOMATHI.DBB.COBOL").member("hellogb")
-copy.execute()
+def copy = new CopyToPDS().file(new File("/u/ibmuser/gbdir/hellogb.cbl")).dataset("GOMATHI.DBB.COBOL").member("hellogb").output(true).key(file).execute()
 
 println("Compiling . . .")
 def compile = new MVSExec().pgm("IGYCRCTL").parm("LIB")
-compile.dd(new DDStatement().name("SYSIN").dsn("GOMATHI.DBB.COBOL(HELLOGB)").options("shr"))
+compile.dd(new DDStatement().name("SYSIN").dsn("GOMATHI.DBB.COBOL(HELLOGB)").options("shr").report(true))
 compile.dd(new DDStatement().name("SYSLIN").dsn("GOMATHI.DBB.OBJ(HELLOGB)").options("shr"))
 compile.dd(new DDStatement().name("SYSUT1").options("cyl space(5,5) unit(vio) new"))
 compile.dd(new DDStatement().name("SYSUT2").options("cyl space(5,5) unit(vio) new"))
@@ -63,3 +69,9 @@ if (rc2 > 4)
 else                                                                    
                                                                         
     println("lked successful!     RC=$rc2")    
+
+def buildReport = BuildReportFactory.getBuildReport()
+
+def jsonOutputFile = new File("/u/ibmuser/gbdir/BuildReport.json")
+def buildReportEncoding = "UTF-8"
+buildReport.save(jsonOutputFile, buildReportEncoding)
