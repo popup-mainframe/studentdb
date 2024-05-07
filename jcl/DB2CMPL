@@ -1,0 +1,105 @@
+//COMPILE JOB ('POPUP'),'COMPILE JCL',
+//             CLASS=A,MSGCLASS=X,NOTIFY=&SYSUID
+//********************************************************************
+//* COMPILATION, LINK EDIT AND THE BIND STEP FOR A COBOL DB2 PROGRAM *
+//* WILL BE DONE BY SUBMITTING THIS JOB.                             *
+//* THE DB2 REGIONS AND CORRESPONDING PARAMETERS NEEDS TO BE CHANGED *
+//* WITH RESPECT TO THE PROGRAM                                      *
+//********************************************************************
+//*                 PRECOMPILE DB2 PROGRAM                           *
+//*--------------  LOCATION OF DBRM LIBRARY -------------------------*
+//********************************************************************
+//PC       EXEC PGM=DSNHPC,
+//             PARM='HOST(COB2),APOST,SOURCE',
+//             REGION=4096K
+//DBRMLIB  DD DISP=SHR,
+//            DSN=IBMUSER.DBBCBL.DBRM(PRG13)
+//STEPLIB  DD DISP=SHR,
+//            DSN=DSNC10.SDSNLOAD
+//*******************************************************************
+//*SYSIN---------------INPUT COBOL DB2 PROGRAM LOCATION-------------*
+//*******************************************************************
+//SYSIN    DD DISP=SHR,
+//            DSN=IBMUSER.SOURCE.LIB(PRG13)
+//SYSCIN   DD DISP=(MOD,PASS),
+//            DSN=&&TEMP,
+//            SPACE=(800,(500,500)),
+//            UNIT=SYSDA
+//*******************************************************************
+//*                DCLGEN MEMBER LOCATION                           *
+//*SYSLIB----------INPUT SOURCE LIBRARY FOR SQL---------------------*
+//*******************************************************************
+//SYSLIB   DD DISP=SHR,
+//            DSN=ADCDG.COBOL.FILES(PATIENT)
+//SYSPRINT DD  SYSOUT=*
+//SYSTERM  DD  SYSOUT=*
+//SYSUDUMP DD  SYSOUT=*
+//SYSUT1   DD  SPACE=(800,(500,500),,,ROUND),
+//             UNIT=SYSDA
+//SYSUT2   DD  SPACE=(800,(500,500),,,ROUND),
+//             UNIT=SYSDA
+//*
+//********************************************************
+//*              COMPILATION *
+//********************************************************
+//*
+//COB      EXEC PGM=IGYCRCTL,
+//             COND=(4,LT,PC),
+//             PARM=(''),REGION=0M
+//STEPLIB  DD  DISP=SHR,
+//             DSN=IGY630.SIGYCOMP
+//SYSIN    DD  DISP=(OLD,DELETE),
+//             DSN=&&TEMP
+//SYSLIB   DD  DUMMY
+//SYSPRINT DD  SYSOUT=*
+//SYSUDUMP DD  SYSOUT=*
+//SYSIN1   DD  SPACE=(605,(4640,4640)),UNIT=SYSDA
+//SYSIN2   DD  SPACE=(400,(240,480)),UNIT=SYSDA
+//SYSUT1   DD  SPACE=(CYL,(2,1)),UNIT=SYSDA
+//SYSUT2   DD  SPACE=(CYL,(2,1)),UNIT=SYSDA
+//SYSUT3   DD  SPACE=(CYL,(2,1)),UNIT=SYSDA
+//SYSUT4   DD  SPACE=(CYL,(2,1)),UNIT=SYSDA
+//SYSUT5   DD  DSN=&&SYMBOLS,SPACE=(CYL,(2,1)),UNIT=SYSDA,
+//             DISP=(MOD,PASS)
+//SYSUT6   DD  SPACE=(CYL,(2,1)),UNIT=SYSDA
+//SYSUT7   DD  SPACE=(CYL,(2,1)),UNIT=SYSDA
+//SYSUT8   DD  SPACE=(CYL,(2,1)),UNIT=SYSDA
+//SYSUT9   DD  SPACE=(CYL,(2,1)),UNIT=SYSDA
+//SYSUT10  DD  SPACE=(CYL,(2,1)),UNIT=SYSDA
+//SYSUT11  DD  SPACE=(CYL,(2,1)),UNIT=SYSDA
+//SYSUT12  DD  SPACE=(CYL,(2,1)),UNIT=SYSDA
+//SYSUT13  DD  SPACE=(CYL,(2,1)),UNIT=SYSDA
+//SYSUT14  DD  SPACE=(CYL,(2,1)),UNIT=SYSDA
+//SYSUT15  DD  SPACE=(CYL,(2,1)),UNIT=SYSDA
+//SORTWK01 DD  SPACE=(CYL,(2,1)),UNIT=SYSDA
+//SORTWK02 DD  SPACE=(CYL,(2,1)),UNIT=SYSDA
+//SORTWK03 DD  SPACE=(CYL,(2,1)),UNIT=SYSDA
+//SORTWK04 DD  SPACE=(CYL,(2,1)),UNIT=SYSDA
+//SORTWK05 DD  SPACE=(CYL,(2,1)),UNIT=SYSDA
+//SORTWK06 DD  SPACE=(CYL,(2,1)),UNIT=SYSDA
+//SORTWK07 DD  SPACE=(CYL,(2,1)),UNIT=SYSDA
+//SORTWK08 DD  SPACE=(CYL,(2,1)),UNIT=SYSDA
+//SORTWK09 DD  SPACE=(CYL,(2,1)),UNIT=SYSDA
+//SORTWK10 DD  SPACE=(CYL,(2,1)),UNIT=SYSDA
+//SYSMDECK DD  SPACE=(CYL,(2,1)),UNIT=SYSDA
+//SYSLIN   DD DSN=&&LOADSET,DISP=(MOD,PASS),
+//            SPACE=(CYL,(2,1),RLSE),
+//            UNIT=SYSDA,
+//            DCB=(RECFM=FB,LRECL=80,BLKSIZE=3200)
+//*
+//*********************************************************
+//*    LINK EDIT
+//*********************************************************
+//*
+//LKED     EXEC PGM=IEWL,
+//         COND=((4,LT))
+//SYSOUT   DD SYSOUT=*
+//SYSPRINT DD SYSOUT=*
+//SYSTERM DD  SYSOUT=*
+//SYSUT1   DD  SPACE=(CYL,(2,1)),UNIT=SYSDA
+//SYSLIB   DD  DISP=SHR,DSN=CEE.SCEELKEX
+//         DD  DISP=SHR,DSN=CEE.SCEELKED
+//         DD  DISP=SHR,DSN=DSNC10.SDSNLOAD
+//SYSLMOD  DD  DISP=SHR,DSN=ADCDG.LOAD.LIB(PRG13)
+//SYSLIN   DD DSN=&&LOADSET,DISP=(OLD,DELETE)
+//*

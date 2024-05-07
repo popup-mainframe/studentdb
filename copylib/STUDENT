@@ -1,0 +1,22 @@
+      ******************************************************************
+      * DCLGEN TABLE(IBMUSER.STUD_STUDENT)                             *
+      *        LIBRARY(ADCDG.DB2.PDS(STUDENT))                         *
+      *        LANGUAGE(COBOL)                                         *
+      *        QUOTE                                                   *
+      * ... IS THE DCLGEN COMMAND THAT MADE THE FOLLOWING STATEMENTS   *
+      ******************************************************************
+           EXEC SQL DECLARE IBMUSER.STUD_STUDENT TABLE
+           ( STUD_ID                        INTEGER,
+             STUD_NAME                      CHAR(15),
+             STUD_DEPT                      CHAR(5)
+           ) END-EXEC.
+      ******************************************************************
+      * COBOL DECLARATION FOR TABLE IBMUSER.STUD_STUDENT               *
+      ******************************************************************
+       01  DCLSTUD-STUDENT.
+           10 STUD-ID              PIC S9(9) USAGE COMP.
+           10 STUD-NAME            PIC X(15).
+           10 STUD-DEPT            PIC X(5).
+      ******************************************************************
+      * THE NUMBER OF COLUMNS DESCRIBED BY THIS DECLARATION IS 3       *
+      ******************************************************************
