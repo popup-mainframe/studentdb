@@ -1,11 +1,7 @@
 import com.ibm.dbb.build.*
-import com.ibm.dbb.build.report.BuildReport
-import com.ibm.dbb.build.report.records.*
 
 println("Build report included . . .")
 BuildReportFactory.createDefaultReport()
-
-
 
 println("Copying source from zFS to PDS . . .")
 def copy = new CopyToPDS().file(new File("/u/ibmuser/gbdir/hellogb.cbl")).dataset("GOMATHI.DBB.COBOL").member("hellogb").output(true).key(file).execute()
