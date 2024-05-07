@@ -70,6 +70,7 @@ else
                                                                         
     println("lked successful!     RC=$rc2")    
 
+println("Build report capturing in a file....") 
 def buildReport = BuildReportFactory.getBuildReport()
 
 def jsonOutputFile = new File("/u/ibmuser/gbdir/BuildReport.json")
