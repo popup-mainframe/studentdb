@@ -1,0 +1,24 @@
+//BINDJOB JOB ('POPUP'),'BIND JOB',                                     00010000
+//             CLASS=A,MSGCLASS=X,NOTIFY=&SYSUID                        00020000
+//BIND     EXEC PGM=IKJEFT01,                                           00030000
+//             COND=(4,LT),                                             00040000
+//             REGION=4096K                                             00050000
+//STEPLIB  DD  DISP=SHR,                                                00060000
+//             DSN=DSNB10.SDSNLOAD                                      00070000
+//DBRMLIB  DD  DISP=SHR,                                                00080000
+//             DSN=ISPW.PLAY.DEV1.DBRM(CWKTDB2X)                        00090001
+//SYSPRINT DD  SYSOUT=*                                                 00100000
+//SYSTSPRT DD  SYSOUT=*                                                 00110000
+//SYSUDUMP DD  SYSOUT=*                                                 00120000
+//SYSTSIN  DD  *                                                        00130000
+    DSN SYSTEM (DBCG)                                                   00140002
+    BIND  PLAN (CWKTDB2X) -                                             00150001
+    VALIDATE  (BIND)     -                                              00160000
+    MEMBER (CWKTDB2X)    -                                              00170001
+    ISOLATION (CS) -                                                    00180000
+    RELEASE   (COMMIT) -                                                00190000
+    LIBRARY   ('ISPW.PLAY.DEV1.DBRM') -                                 00200000
+    ACTION    (REP) -                                                   00210000
+    OWNER     (IBMUSER) -                                               00220000
+    QUALIFIER (IBMUSER) -                                               00230000
+    ENCODING(EBCDIC)                                                    00240000
