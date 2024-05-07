@@ -1,4 +1,7 @@
 import com.ibm.dbb.build.*
+import com.ibm.dbb.build.report.*
+import com.ibm.dbb.build.html.*
+import com.ibm.dbb.build.report.records.*
 
 println("Build report included . . .")
 BuildReportFactory.createDefaultReport()
