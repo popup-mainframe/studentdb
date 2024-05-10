@@ -20,3 +20,5 @@ without deamon - /usr/lpp/IBM/dbbver2/bin/groovyz /u/ibmuser/gbdir/hellogb1.groo
 
 /us/ibmuser/gbdir/Package.groovy    
 /usr/lpp/IBM/dbbver2/bin/groovyz /u/ibmuser/gbdir/Package.groovy
+
+read Buildreport Json file on uss : chtag -t -c ISO8859-1
