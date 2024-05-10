@@ -25,3 +25,5 @@ read Buildreport Json file on uss : chtag -t -c ISO8859-1 <report.json>
 
 python encoding reference chtag -tc IBM-1047 <filenamehello1.py>
 https://www.ibm.com/docs/en/python-zos/3.12?topic=getting-started-open-enterprise-sdk-python 
+
+python3 /u/ibmuser/gbdir/dbb_prepare_local_folder.py --dbbBuildResult /u/ibmuser/gbdir/BuildReport.json --workingFolder ./package
