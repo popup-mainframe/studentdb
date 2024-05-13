@@ -23,6 +23,9 @@ without deamon - /usr/lpp/IBM/dbbver2/bin/groovyz /u/ibmuser/gbdir/hellogb1.groo
 
 read Buildreport Json file on uss : chtag -t -c ISO8859-1 <report.json>
 
+To run a new python script,change the encoding of the file using the command   chtag -t -c utf8 hello1.py
+
+
 python encoding reference chtag -tc IBM-1047 <filenamehello1.py>
 https://www.ibm.com/docs/en/python-zos/3.12?topic=getting-started-open-enterprise-sdk-python 
 
