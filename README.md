@@ -36,6 +36,11 @@ python3 /u/ibmuser/gbdir/dbb_prepare_local_folder.py --dbbBuildResult /u/ibmuser
 
 *To tar :
 tar -cUXf /u/ibmuser/gbdir/hellopackage.tar  /u/ibmuser/gbdir/workpackage
-list contents of tar
-tar -tf package.v1.tar
+*list contents of tar : tar -tf hellopackage.tar 
+*to lost with file tags : tar -tf hellopackage.tar -L T
+*to untar:
+
+*run simplepackagegroovy
+/usr/lpp/IBM/dbbver2/bin/groovyz  /u/ibmuser/dbb/Pipeline/SimplePackageDeploy/SimplePackageDeploy.groovy --workDir /u/ibmuser/gbdir/applout --tarFileName /u/ibmuser/gbdir/workpackage.tar --hlq IBMUSER.UNIT.APPLOUT --packageWithExtension
+
 
