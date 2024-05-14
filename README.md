@@ -39,9 +39,8 @@ python3 /u/ibmuser/gbdir/dbb_prepare_local_folder.py --dbbBuildResult /u/ibmuser
 
 **Step 3: To create package.tar file**
 
-Run the PackageBuildOutput :-- 
-/usr/lpp/IBM/dbbver2/lib/sclient 127.0.0.1 8080 groovyz /u/ibmuser/dbb/Pipeline/PackageBuildOutputs/PackageBuildOutputs.groovy \ --workDir /u/ibmuser/gbdir/hellogb1package
-/usr/lpp/IBM/dbbver2/bin/groovyz  /u/ibmuser/dbb/Pipeline/PackageBuildOutputs/PackageBuildOutputs.groovy \ --workDir /u/ibmuser/gbdir/hellogb1package
+Run the PackageBuildOutput **without deamon** :-- 
+*/usr/lpp/IBM/dbbver2/bin/groovyz  /u/ibmuser/dbb/Pipeline/PackageBuildOutputs/PackageBuildOutputs.groovy \ --workDir /u/ibmuser/gbdir/hellogb1package
 
 <<Error in this step>>
 *To tar :
@@ -50,7 +49,7 @@ tar -cUXf /u/ibmuser/gbdir/hellopackage.tar  /u/ibmuser/gbdir/workpackage
 
 *list contents of tar : tar -tf hellopackage.tar 
 
-*to lost with file tags : tar -tf hellopackage.tar -L T
+*to list with file tags : tar -tf hellopackage.tar -L T
 
 *to untar:
 
