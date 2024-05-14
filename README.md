@@ -31,3 +31,8 @@ python encoding reference chtag -tc IBM-1047 <filenamehello1.py>
 https://www.ibm.com/docs/en/python-zos/3.12?topic=getting-started-open-enterprise-sdk-python 
 
 python3 /u/ibmuser/gbdir/dbb_prepare_local_folder.py --dbbBuildResult /u/ibmuser/gbdir/BuildReport.json --workingFolder ./package
+
+To tar :
+tar -cUXf /u/ibmuser/gbdir/hellopackage.tar  /u/ibmuser/gbdir/workpackage
+list contents of tar
+tar -tf package.v1.tar
