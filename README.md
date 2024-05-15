@@ -40,7 +40,18 @@ python3 /u/ibmuser/gbdir/dbb_prepare_local_folder.py --dbbBuildResult /u/ibmuser
 **Step 3: To create package.tar file**
 
 Run the PackageBuildOutput **without deamon** :-- 
+**package tar file without file extension option** 
 */usr/lpp/IBM/dbbver2/bin/groovyz  /u/ibmuser/dbb/Pipeline/PackageBuildOutputs/PackageBuildOutputs.groovy \ --workDir /u/ibmuser/gbdir/hellogb1package
+
+**package tar file with yaml file creaton**
+/usr/lpp/IBM/dbbver2/bin/groovyz /u/ibmuser/dbb/Pipeline/PackageBuildOutputs/PackageBuildOutputs.groovy \
+      --workDir /u/ibmuser/gbdir/hellogb1package/logs  \
+      --addExtension \
+      --branch main \
+      --generateWaziDeployAppManifest  \
+      --includeLogs "*.log"  \
+      --versionName rel-1.0.0 \
+      --verbose
 
 <<Error in this step>>
 *To tar :
