@@ -38,7 +38,7 @@ https://www.ibm.com/docs/en/python-zos/3.12?topic=getting-started-open-enterpris
 python3 /u/ibmuser/gbdir/dbb_prepare_local_folder.py --dbbBuildResult /u/ibmuser/gbdir/BuildReport1.json               --workingFolder /u/ibmuser/gbdir/hellogb1package
 
 **Step 3: To create package.tar file**
-
+Note:BuildReport.json should be available in tje workDir
 Run the PackageBuildOutput **without deamon** :-- 
 **package tar file without file extension option** 
 */usr/lpp/IBM/dbbver2/bin/groovyz  /u/ibmuser/dbb/Pipeline/PackageBuildOutputs/PackageBuildOutputs.groovy \ --workDir /u/ibmuser/gbdir/hellogb1package
