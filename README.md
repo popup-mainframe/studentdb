@@ -23,7 +23,7 @@ git push origin main
   
 **Encoding**
 
-change code tag if requried for manual read Buildreport Json file on uss : chtag -t -c ISO8859-1 <report.json>
+change code tag if requried for manual read Buildreport Json file or any yaml/yml file on uss : chtag -t -c ISO8859-1 <report.json>
 
 To run a new python script,change the encoding of the file using the command   chtag -t -c utf8 hello1.py
 
