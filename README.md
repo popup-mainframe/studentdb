@@ -1,4 +1,4 @@
-Testing of wazideploy for a sample Hellowrold program 
+Testing of wazideploy for a sample COBOL-DB2 program
 git init
 
 git add .
