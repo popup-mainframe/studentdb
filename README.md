@@ -1,3 +1,4 @@
+Testing of wazideploy for a sample Hellowrold program 
 git init
 
 git add .
